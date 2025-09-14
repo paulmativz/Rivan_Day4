@@ -1,0 +1,140 @@
+Username=admin
+Password=adminpass
+Signature=g0t r00t?
+
+
+sqlmap --url="https://127.0.0.1/mutillidae/src/index.php?page=user-info.php&username=name&password=pass&user-info-php-submit-button=View+Account+Details" --current-db
+
+
+How to attack anything
+
+hacker/attaker/source vs. Victim/destination/defence
+
+netstat -s -p tcp
+disable wifi, then type this wifi, check foreign address
+
+netstat -ano
+
+ net use x: /delete
+
+ net use \\10.12.1.10\ipc$
+ net use x: \\10.12.1.10\c$
+
+port 135 port 445
+
+
+MITRE ATTACK
+search 445 attack
+
+show control-plane host open-ports (CUCM)
+
+
+hacker/attaker/source vs. Victim/destination/defence
+YOU:10.12.1.10                 10.12.100.8  
+SIP:10.12.1.21
+random: 1000++
+sPORT: 1000++
+DIP:2000
+
+tcp.flags.syn ==1 (wireshark)
+tcp.flags.syn ==1 && tcp.flags.ack
+
+syn - when you hack someone
+ack - pag wala syang firewall
+
+DNS at 443
+
+Check and nmap other web for reference of port
+
+splunk ( pag nahahack dito nag susumbong)
+
+
+ebet10.com phonebettingSite.com:1720,2000, 5060, 5061
+ebet10.com phonebettingSite.com: 80, 443, 22, ping
+
+2000
+1720
+5060
+5061
+
+config t
+NO IP access-list Extended NGFW2
+IP access-list Extended NGFW2
+ Permit tcp Any host ebet10.com eq 1720 log
+ Permit tcp Any host ebet10.com eq 2000 log
+ Permit tcp Any host ebet10.com eq 5060 log
+ Permit tcp Any host ebet10.com eq 5061 log
+ Permit tcp Any host ebet11.com eq 80 log
+ Permit tcp Any host ebet11.com eq 443 log
+ Permit tcp Any host ebet11.com eq 22 log
+ Permit icmp Any host ebet11.com log
+ Int Gi 3
+  ip access-group NGFW2 in
+end
+
+
+
+ebet10.com phonebettingSite.com:22,53, 443, 5061, ping
+ebet10.com phonebettingSite.com: 80, 1720, 5060, 5061
+
+2000
+1720
+5060
+5061
+
+config t
+NO IP access-list Extended NGFW3
+IP access-list Extended NGFW3
+ Permit tcp Any host ebet10.com eq 22 log
+ Permit tcp Any host ebet10.com eq 53 log
+ Permit tcp Any host ebet10.com eq 5061 log
+ Permit icmp Any host ebet10.com log
+ Permit tcp Any host ebet11.com eq 80 log
+ Permit tcp Any host ebet11.com eq 1720 log
+ Permit tcp Any host ebet11.com eq 5060 log
+ Permit tcp Any host ebet11.com eq 5061 log
+ Int Gi 3
+  ip access-group NGFW3 in
+end
+
+ Int Gi 3
+  NO ip access-group NGFW3 in
+end
+
+Extra protection
+8080 - http - proxy
+8443 - open - proxy
+
+NIST
+
+Proxy Server
+
+@NFW
+guestshell destroy
+!
+conf t
+ int g1
+  no ip nat outside
+int range g2-3
+ no ip nat inside
+ end
+show run | s int
+
+Ansible
+ip -4 addr
+
+Configured SSH:
+!@Coretaas
+conf t
+ ip domain name devs.com
+ username admin privilige 15 secret pass
+ crypto key generate rsa modulus 2048 label devs
+ ip ssh rsa keypair-name devs
+ line vty 0 14
+  login local
+  transport input all
+  exec-timeout 0 0
+  end
+
+
+
