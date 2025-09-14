@@ -1,0 +1,12 @@
+---
+- name: Add loop to coretaas
+  hosts:ctaas
+  gather_facts:no
+  tasks:
+    - name: add loop 1
+      ios_command:
+        commands:
+          - conf t
+          -int loop100
+          -int add 10.12.100.100 255.255.255.255
+          -end
